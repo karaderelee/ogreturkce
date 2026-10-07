@@ -10,12 +10,15 @@ import {
   CheckCircle2,
   Sparkles,
   Menu,
-  X
+  X,
+  KeyRound,
+  LogOut
 } from 'lucide-react';
 import AdminDashboard from './AdminDashboard';
 import AdminPosts from './AdminPosts';
 import AdminCategories from './AdminCategories';
 import AdminPostFormModal from './AdminPostFormModal';
+import AdminPasswordModal from './AdminPasswordModal';
 
 export default function AdminLayout({ 
   posts, 
@@ -23,11 +26,15 @@ export default function AdminLayout({
   categories, 
   setCategories, 
   onExitAdmin, 
+  onAdminLogout,
+  adminConfig,
+  onSaveAdminConfig,
   onViewLivePost,
   onResetDefaults 
 }) {
   const [activeTab, setActiveTab] = useState('dashboard'); // 'dashboard', 'posts', 'categories'
   const [modalOpen, setModalOpen] = useState(false);
+  const [passwordModalOpen, setPasswordModalOpen] = useState(false);
   const [postToEdit, setPostToEdit] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -125,22 +132,38 @@ export default function AdminLayout({
             </div>
           </div>
 
-          {/* Quick exit to live site */}
+          {/* Action buttons: Add Post, Change Password, View Site, Logout */}
           <div className="flex items-center gap-2">
             <button
               onClick={handleOpenNewPost}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-teal-50 text-teal-800 hover:bg-teal-100 border border-teal-200 text-xs font-bold transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-50 text-teal-800 hover:bg-teal-100 border border-teal-200 text-xs font-bold transition-colors"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Yazı Ekle</span>
             </button>
 
             <button
-              onClick={onExitAdmin}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-teal-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs"
+              onClick={() => setPasswordModalOpen(true)}
+              className="p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors border border-slate-200"
+              title="Yönetici Şifresini Değiştir"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Siteyi Görüntüle</span>
+              <KeyRound className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={onExitAdmin}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-teal-700 text-white text-xs font-semibold transition-all shadow-xs"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Siteyi Gör</span>
+            </button>
+
+            <button
+              onClick={onAdminLogout}
+              className="p-2 rounded-xl text-rose-600 hover:bg-rose-50 transition-colors border border-rose-200/60"
+              title="Yönetici Oturumunu Kapat"
+            >
+              <LogOut className="w-4 h-4" />
             </button>
           </div>
 
@@ -300,6 +323,17 @@ export default function AdminLayout({
         onSavePost={handleSavePost}
         postToEdit={postToEdit}
         categories={categories}
+      />
+
+      {/* Change Password Modal */}
+      <AdminPasswordModal
+        isOpen={passwordModalOpen}
+        onClose={() => setPasswordModalOpen(false)}
+        currentConfig={adminConfig}
+        onSaveConfig={(newCfg) => {
+          onSaveAdminConfig(newCfg);
+          showToast('Yönetici şifreniz başarıyla güncellendi!');
+        }}
       />
 
       {/* Toast Notification */}

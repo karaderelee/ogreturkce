@@ -13,6 +13,7 @@ import AboutView from './components/AboutView';
 import ContactView from './components/ContactView';
 import SearchModal from './components/SearchModal';
 import AdminLayout from './components/admin/AdminLayout';
+import AdminLogin from './components/admin/AdminLogin';
 import AuthModal from './components/auth/AuthModal';
 import MaterialShareModal from './components/materials/MaterialShareModal';
 
@@ -85,6 +86,53 @@ export default function App() {
     }
     return false;
   });
+
+  // Admin authentication state & credentials
+  const [adminConfig, setAdminConfig] = useState(() => {
+    try {
+      const saved = localStorage.getItem('ogreturkce_admin_config');
+      return saved ? JSON.parse(saved) : { username: 'admin', password: 'ogreturkce2024' };
+    } catch {
+      return { username: 'admin', password: 'ogreturkce2024' };
+    }
+  });
+
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
+    try {
+      return localStorage.getItem('ogreturkce_admin_authenticated') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleAdminLoginSuccess = () => {
+    setIsAdminAuthenticated(true);
+    try {
+      localStorage.setItem('ogreturkce_admin_authenticated', 'true');
+    } catch (e) {
+      console.error(e);
+    }
+    showToast('Yönetici girişi başarılı. Hoş geldiniz!');
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdminAuthenticated(false);
+    try {
+      localStorage.removeItem('ogreturkce_admin_authenticated');
+    } catch (e) {
+      console.error(e);
+    }
+    showToast('Yönetici oturumu güvenli şekilde kapatıldı.');
+  };
+
+  const handleSaveAdminConfig = (newConfig) => {
+    setAdminConfig(newConfig);
+    try {
+      localStorage.setItem('ogreturkce_admin_config', JSON.stringify(newConfig));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const [activePage, setActivePage] = useState('home'); // 'home', 'blog', 'categories', 'about', 'contact', 'post-detail'
   const [selectedPost, setSelectedPost] = useState(null);
@@ -245,8 +293,18 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Render Admin View if on /admin
+  // Render Admin View if on /admin (Protected by Admin Authentication)
   if (isAdmin) {
+    if (!isAdminAuthenticated) {
+      return (
+        <AdminLogin
+          onLoginSuccess={handleAdminLoginSuccess}
+          onExitToSite={handleExitAdmin}
+          adminConfig={adminConfig}
+        />
+      );
+    }
+
     return (
       <AdminLayout
         posts={posts}
@@ -254,6 +312,9 @@ export default function App() {
         categories={categories}
         setCategories={setCategories}
         onExitAdmin={handleExitAdmin}
+        onAdminLogout={handleAdminLogout}
+        adminConfig={adminConfig}
+        onSaveAdminConfig={handleSaveAdminConfig}
         onViewLivePost={handleSelectPost}
         onResetDefaults={handleResetDefaults}
       />
