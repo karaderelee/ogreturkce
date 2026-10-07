@@ -91,7 +91,7 @@ export default function AdminLogin({ onLoginSuccess, onExitToSite, adminConfig }
                 type="text"
                 required
                 autoFocus
-                placeholder="admin veya karaderelee"
+                placeholder="Yönetici kullanıcı adınız"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white/15 transition-all"
@@ -134,19 +134,11 @@ export default function AdminLogin({ onLoginSuccess, onExitToSite, adminConfig }
 
         </form>
 
-        {/* Security Note and Default Credential Helper */}
-        <div className="mt-8 pt-6 border-t border-white/10 text-center space-y-2">
-          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-[11px] text-slate-300">
-            <span className="block font-semibold text-teal-300 mb-0.5">Varsayılan Yönetici Bilgileriniz:</span>
-            <span>Kullanıcı Adı: <code className="text-white bg-white/10 px-1 py-0.5 rounded font-mono">admin</code></span>
-            <span className="mx-2">·</span>
-            <span>Şifre: <code className="text-white bg-white/10 px-1 py-0.5 rounded font-mono">ogreturkce2024</code></span>
-            <span className="block text-[10px] text-slate-400 mt-1">(Panel içinden şifrenizi istediğiniz an değiştirebilirsiniz)</span>
-          </div>
-
-          <div className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5 pt-1">
-            <Lock className="w-3 h-3 text-teal-500" />
-            <span>256-bit uçtan uca korumalı yönetim oturumu</span>
+        {/* Security Footer */}
+        <div className="mt-8 pt-6 border-t border-white/10 text-center">
+          <div className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+            <Lock className="w-3.5 h-3.5 text-teal-400" />
+            <span>256-bit güvenli ve şifreli yönetim oturumu</span>
           </div>
         </div>
 
