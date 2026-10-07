@@ -59,8 +59,8 @@ export default function Navbar({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-extrabold tracking-tight text-slate-900">
-                  öğre<span className="text-teal-500 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
+                <span className="text-2xl font-extrabold tracking-tight text-slate-900 whitespace-nowrap">
+                  öğre<span className="text-teal-500">T</span>ürkçe
                 </span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-800 border border-teal-200/80">
                   <Sparkles className="w-2.5 h-2.5 mr-1 text-teal-600" /> TÜRKÇE ZÜMRESİ

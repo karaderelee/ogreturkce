@@ -17,8 +17,8 @@ export default function Footer({ onNavigate, onSelectCategory, onGoToAdmin }) {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center text-slate-950 shadow-md">
                 <BookOpen className="w-5 h-5 stroke-[2.5]" />
               </div>
-              <span className="text-2xl font-extrabold text-white tracking-tight">
-                öğre<span className="text-teal-400 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
+              <span className="text-2xl font-extrabold text-white tracking-tight whitespace-nowrap">
+                öğre<span className="text-teal-400">T</span>ürkçe
               </span>
             </div>
 

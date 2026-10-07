@@ -139,8 +139,8 @@ export default function AuthModal({
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-extrabold text-lg text-slate-900 tracking-tight">
-                öğre<span className="text-teal-500 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
+              <span className="font-extrabold text-lg text-slate-900 tracking-tight whitespace-nowrap">
+                öğre<span className="text-teal-500">T</span>ürkçe
               </span>
               <span className="block text-[11px] text-teal-800 font-semibold">
                 Öğretmen Topluluğu Girişi

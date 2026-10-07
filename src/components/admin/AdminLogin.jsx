@@ -75,8 +75,8 @@ export default function AdminLogin({ onLoginSuccess, onExitToSite, adminConfig }
             <Lock className="w-7 h-7 stroke-[2.2]" />
           </div>
 
-          <h1 className="text-2xl font-extrabold tracking-tight text-white mb-1">
-            öğre<span className="text-teal-400 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
+          <h1 className="text-2xl font-extrabold tracking-tight text-white mb-1 whitespace-nowrap">
+            öğre<span className="text-teal-400">T</span>ürkçe
           </h1>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-400/20 text-teal-300 text-xs font-semibold mt-1">
             <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
