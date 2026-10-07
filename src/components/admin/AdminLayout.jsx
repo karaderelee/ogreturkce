@@ -123,7 +123,7 @@ export default function AdminLayout({
               </div>
               <div>
                 <span className="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight">
-                  öğre<span className="text-teal-600 font-black">T</span>ürkçe
+                  öğre<span className="text-teal-500 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
                 </span>
                 <span className="text-xs font-semibold text-teal-800 ml-2 px-2 py-0.5 rounded-full bg-teal-50 border border-teal-200">
                   Öğretmen Yönetim Paneli

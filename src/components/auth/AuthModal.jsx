@@ -65,30 +65,6 @@ export default function AuthModal({
     }
   };
 
-  // Quick Demo Login for instant testing
-  const handleQuickDemoLogin = () => {
-    let users = [];
-    try {
-      const stored = localStorage.getItem('ogreturkce_users');
-      users = stored ? JSON.parse(stored) : [];
-    } catch {
-      users = [];
-    }
-
-    const demoUser = users[0] || {
-      id: 'demo-user-1',
-      name: 'Zeynep Kaya',
-      email: 'zeynep.ogretmen@meb.k12.tr',
-      password: 'ogretmen123',
-      branch: '8. Sınıf LGS Türkçe Öğretmeni',
-      school: 'Atatürk Ortaokulu / Ankara',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-      sharedMaterialsCount: 3
-    };
-
-    onLoginSuccess(demoUser);
-    onClose();
-  };
 
   // Handle Register
   const handleRegisterSubmit = (e) => {
@@ -164,7 +140,7 @@ export default function AuthModal({
             </div>
             <div>
               <span className="font-extrabold text-lg text-slate-900 tracking-tight">
-                öğre<span className="text-teal-600 font-black">T</span>ürkçe
+                öğre<span className="text-teal-500 font-black text-[1.28em] inline-block -translate-y-0.5 px-0.5 drop-shadow-xs">T</span>ürkçe
               </span>
               <span className="block text-[11px] text-teal-800 font-semibold">
                 Öğretmen Topluluğu Girişi
@@ -267,19 +243,6 @@ export default function AuthModal({
                 <span>Giriş Yap</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-
-              {/* 1-Click Fast Demo Login Button */}
-              <div className="pt-2 border-t border-slate-100 text-center">
-                <span className="block text-[11px] text-slate-400 mb-2">Hemen test etmek için:</span>
-                <button
-                  type="button"
-                  onClick={handleQuickDemoLogin}
-                  className="w-full py-2.5 px-3 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-teal-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-                  <span>Örnek Öğretmen ile 1 Tıkla Hızlı Giriş Yap</span>
-                </button>
-              </div>
 
             </form>
           )}

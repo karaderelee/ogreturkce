@@ -71,7 +71,7 @@ export default function AboutView({ onNavigateToContact }) {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Feather className="w-3.5 h-3.5" />
-            <span>öğreTürkçe Hikâyesi</span>
+            <span>öğre<span className="text-teal-600 font-black text-[1.25em] inline-block -translate-y-0.5 px-0.5">T</span>ürkçe Hikâyesi</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
             Türkçe Öğretmenlerinin Paylaşım Sayfası
@@ -84,14 +84,14 @@ export default function AboutView({ onNavigateToContact }) {
         {/* Story Section */}
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm mb-14">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Neden öğreTürkçe?
+            Neden öğre<span className="text-teal-600 font-black text-[1.25em] inline-block -translate-y-0.5 px-0.5">T</span>ürkçe?
           </h2>
           <div className="prose text-slate-600 text-sm sm:text-base leading-relaxed space-y-4">
             <p>
               Türkçe dersi, öğrencilerin sadece bir dersi değil, tüm akademik hayatlarını ve düşünme biçimlerini belirleyen anadil eğitimidir. Özellikle LGS döneminde öğrencilerin uzun paragraflar ve sözel mantık karşısındaki kaygıları, Türkçe öğretmenlerinin omzuna büyük bir sorumluluk yüklemektedir.
             </p>
             <p>
-              <strong>öğreTürkçe</strong>, Türkiye genelindeki ortaokul Türkçe öğretmenlerini bir araya getirmek amacıyla kuruldu. 5. sınıftan 8. sınıfa kadar; çalışma kağıtları, dil bilgisi oyunları, metin tahlilleri ve LGS soru çözme stratejilerini sade ve pratik bir yapıda sunuyoruz.
+              <strong>öğre<span className="text-teal-600 font-black text-[1.25em] inline-block -translate-y-0.5 px-0.5">T</span>ürkçe</strong>, Türkiye genelindeki ortaokul Türkçe öğretmenlerini bir araya getirmek amacıyla kuruldu. 5. sınıftan 8. sınıfa kadar; çalışma kağıtları, dil bilgisi oyunları, metin tahlilleri ve LGS soru çözme stratejilerini sade ve pratik bir yapıda sunuyoruz.
             </p>
             <div className="p-4 bg-teal-50 rounded-2xl border-l-4 border-teal-700 text-teal-900 font-medium italic my-6">
               "Türkçemiz, ses bayrağımızdır. Onu seven ve sevdiren öğretmenlerin zümre dayanışması en büyük zenginliğimizdir."
