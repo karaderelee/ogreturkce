@@ -91,10 +91,17 @@ export default function App() {
   const [adminConfig, setAdminConfig] = useState(() => {
     try {
       const saved = localStorage.getItem('ogreturkce_admin_config');
-      return saved ? JSON.parse(saved) : { username: 'admin', password: 'ogreturkce2024' };
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          username: parsed.username || 'admin',
+          password: parsed.password || 'ogreturkce2024'
+        };
+      }
     } catch {
-      return { username: 'admin', password: 'ogreturkce2024' };
+      // ignore
     }
+    return { username: 'admin', password: 'ogreturkce2024' };
   });
 
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
@@ -301,6 +308,7 @@ export default function App() {
           onLoginSuccess={handleAdminLoginSuccess}
           onExitToSite={handleExitAdmin}
           adminConfig={adminConfig}
+          onUpdateAdminConfig={handleSaveAdminConfig}
         />
       );
     }
