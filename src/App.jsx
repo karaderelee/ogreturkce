@@ -308,7 +308,6 @@ export default function App() {
           onLoginSuccess={handleAdminLoginSuccess}
           onExitToSite={handleExitAdmin}
           adminConfig={adminConfig}
-          onUpdateAdminConfig={handleSaveAdminConfig}
         />
       );
     }
